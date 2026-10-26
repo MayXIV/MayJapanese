@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>May's Japanese Progress</title>
+  <meta name="description" content="May's WaniKani and Bunpro study progress, updated daily.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E5%AD%A6%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="title-row">
+        <h1 data-i18n="title">May's Japanese Progress</h1>
+        <div class="lang" role="group" aria-label="Language / 言語">
+          <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="ja" lang="ja" aria-pressed="false">日本語</button>
+        </div>
+      </div>
+      <p class="updated" id="updated" data-i18n="loading">Loading…</p>
+      <nav aria-label="Sections">
+        <a href="#wanikani">WaniKani</a>
+        <a href="#items" data-i18n="nav_items">Items</a>
+        <a href="#bunpro">Bunpro</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="error" id="error" hidden></p>
+
+    <details class="section" id="wanikani" open>
+      <summary><h2>WaniKani <span class="sub" data-i18n="wk_sub">kanji &amp; vocabulary</span></h2></summary>
+      <div class="stats" id="wk-stats"></div>
+      <div class="card">
+        <h3 data-i18n="srs_title">Items by SRS stage</h3>
+        <div id="wk-srs"></div>
+      </div>
+    </details>
+
+    <details class="section" id="items">
+      <summary><h2 data-i18n="items_title">Items by level</h2></summary>
+      <div class="card">
+        <form class="search" id="search-form" role="search">
+          <label class="label" for="search" data-i18n="search_label">Search all levels</label>
+          <div class="search-box">
+            <input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+            <button type="button" id="search-clear" class="clear" hidden>×</button>
+          </div>
+          <p class="hint search-status" id="search-status" aria-live="polite"></p>
+          <div id="search-results"></div>
+        </form>
+        <div class="controls">
+          <div class="control">
+            <span class="label" id="lvl-label" data-i18n="level">Level</span>
+            <div class="levels" id="level-picker" role="group" aria-labelledby="lvl-label"></div>
+          </div>
+          <div class="control-row">
+            <label class="control">
+              <span class="label" data-i18n="type">Type</span>
+              <select id="type-filter">
+                <option value="all" data-i18n="type_all">All types</option>
+                <option value="radical" data-i18n="type_radical">Radicals</option>
+                <option value="kanji" data-i18n="type_kanji">Kanji</option>
+                <option value="vocabulary" data-i18n="type_vocab">Vocabulary</option>
+              </select>
+            </label>
+            <label class="control">
+              <span class="label" data-i18n="sort">Sort</span>
+              <select id="sort">
+                <option value="default" data-i18n="sort_default">WaniKani order</option>
+                <option value="acc-asc" data-i18n="sort_weak">Weakest first</option>
+                <option value="acc-desc" data-i18n="sort_strong">Strongest first</option>
+                <option value="srs-asc" data-i18n="sort_srs">SRS stage (lowest first)</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <p class="hint" id="items-summary"></p>
+        <p class="hint" data-i18n="items_hint">Hover or tap an item for details.</p>
+        <ul class="items" id="item-grid"></ul>
+      </div>
+    </details>
+
+    <details class="section" id="bunpro" open>
+      <summary><h2><span data-i18n="bp_title">What I'm working on</span> <span class="sub">Bunpro</span></h2></summary>
+      <div class="stats" id="bp-stats"></div>
+      <div class="grid-2">
+        <div class="card">
+          <h3 data-i18n="bp_jlpt_title">JLPT grammar progress</h3>
+          <div id="bp-jlpt"></div>
+        </div>
+        <div class="card">
+          <h3 data-i18n="bp_stages_title">SRS stages</h3>
+          <div id="bp-stages"></div>
+        </div>
+      </div>
+    </details>
+  </main>
+
+  <footer class="wrap site-footer">
+    <p data-i18n="footer">Data from WaniKani and Bunpro, synced daily.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
